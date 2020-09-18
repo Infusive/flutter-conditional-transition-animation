@@ -132,16 +132,6 @@ class RouteSecondPage extends PageRoute {
   }
 
   @override
-  bool canTransitionTo(TransitionRoute<dynamic> nextRoute) {
-    return true;
-  }
-
-  @override
-  bool canTransitionFrom(TransitionRoute<dynamic> previousRoute) {
-    return true;
-  }
-
-  @override
   Widget buildTransitions(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation, Widget child) {
     return MyRouteTransitions()

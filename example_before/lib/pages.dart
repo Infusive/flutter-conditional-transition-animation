@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
     return PageScaffold(
       backgroundColor: Colors.red[400],
       text: 'HomePage',
+      navigation: NavigationList(),
     );
   }
 }
@@ -17,6 +18,7 @@ class SecondPage extends StatelessWidget {
     return PageScaffold(
       backgroundColor: Colors.yellow[400],
       text: 'SecondPage',
+      navigation: NavigationListSecondPage(),
     );
   }
 }
@@ -27,6 +29,7 @@ class ThirdPage extends StatelessWidget {
     return PageScaffold(
       backgroundColor: Colors.green[400],
       text: 'ThirdPage',
+      navigation: NavigationList(),
     );
   }
 }
@@ -34,11 +37,13 @@ class ThirdPage extends StatelessWidget {
 class PageScaffold extends StatelessWidget {
   final Color backgroundColor;
   final String text;
+  final Widget navigation;
 
   const PageScaffold({
     Key key,
     this.backgroundColor,
     this.text,
+    this.navigation,
   }) : super(key: key);
 
   @override
@@ -54,7 +59,7 @@ class PageScaffold extends StatelessWidget {
               style: Theme.of(context).textTheme.headline5,
             ),
           ),
-          NavigationList(),
+          this.navigation,
         ],
       ),
     );
@@ -92,6 +97,32 @@ class NavigationList extends StatelessWidget {
               icon: Icon(Icons.account_box),
               onPressed: () =>
                   Navigator.of(context).pushNamed(MyRoute.thirdPage),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NavigationListSecondPage extends StatelessWidget {
+  const NavigationListSecondPage({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Container(
+        width: 100,
+        height: 135,
+        child: ListView(
+          children: [
+            IconButton(
+              iconSize: 40,
+              icon: Icon(Icons.backspace),
+              onPressed: () => Navigator.of(context).pop(),
             ),
           ],
         ),
